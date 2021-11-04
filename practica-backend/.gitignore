@@ -5,6 +5,9 @@
 # CSV
 *.csv
 
+#Database
+orm.config.json
+
 # Logs
 logs
 *.log
