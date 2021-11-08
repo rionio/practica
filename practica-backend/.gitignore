@@ -5,6 +5,9 @@
 # CSV
 *.csv
 
+#Enviroment 
+.env
+
 #Database
 orm.config.json
 

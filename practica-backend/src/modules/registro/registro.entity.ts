@@ -2,18 +2,18 @@ import { BaseEntity, Column, Entity, PrimaryColumn } from 'typeorm';
 
 @Entity('registros')
 export class Registro extends BaseEntity {
-  @PrimaryColumn()
+  @PrimaryColumn('number')
   companyid: number;
-  @Column()
+  @Column('number')
   userid: number;
-  @Column()
+  @Column('varchar')
   metodo: string;
-  @Column()
+  @Column('varchar')
   apiid: string;
-  @Column()
+  @Column('number')
   tiempo: number;
-  @Column()
+  @Column('date')
   fecha: Date;
-  @Column()
+  @Column('varchar')
   source: string;
 }

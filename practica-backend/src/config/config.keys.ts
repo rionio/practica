@@ -3,5 +3,5 @@ export enum Configuration {
   HOST = 'localhost',
   USERNAME = 'postgres',
   PASSWORD = 'mysecretpassword',
-  DATABASE = 'practicadb',
+  DATABASE = 'my-postgres',
 }
