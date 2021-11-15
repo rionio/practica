@@ -1,7 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { MapperService } from '../../shared/mapper.service';
-import { Any } from 'typeorm';
 import { RegistroDto } from './dto/registro.dto';
 import { Registro } from './registro.entity';
 import { RegisterRepository } from './registro.repository';
