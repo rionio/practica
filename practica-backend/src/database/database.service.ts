@@ -11,12 +11,13 @@ export const databaseProviders = [
     async useFactory(config: ConfigService) {
       //crea un objeto de conexion con las propiedades necesarias
       return {
-        ssl: true,
         type: 'postgres' as 'post',
         host: config.get(Configuration.HOST),
         username: config.get(Configuration.USERNAME),
         password: config.get(Configuration.PASSWORD),
-        entities: [__dirname + '/../**.entity{.ts,.js}'],
+        port: 5444,
+        database: config.get(Configuration.DATABASE),
+        entities: [__dirname + '/../**/*.entity{.ts,.js}'],
         migration: [__dirname + '/migrations/*{.ts,.js}'],
       } as unknown as ConnectionOptions;
     },
