@@ -22,4 +22,16 @@ export class RegistroService {
       new RegistroDto(),
     );
   }
+  async get(id: number): Promise<RegistroDto> {
+    const registro: Registro = await this._registroRepository.findOne({
+      where: { registroid: id },
+    });
+    if (!registro) {
+      throw new NotFoundException();
+    }
+    return this._mapperService.map<Registro, RegistroDto>(
+      registro,
+      new RegistroDto(),
+    );
+  }
 }

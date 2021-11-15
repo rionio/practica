@@ -17,8 +17,8 @@ export class MapperService extends TypeMapper {
         (dto) => dto.companyid,
       )
       .map(
-        (entity) => entity.fecha,
-        (dto) => dto.fecha,
+        (entity) => entity.userid,
+        (dto) => dto.userid,
       )
       .map(
         (entity) => entity.tiempo,
