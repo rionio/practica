@@ -1,20 +1,18 @@
 import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
-import { RegistroDto } from './dto/registro.dto';
+import { Registro } from './registro.entity';
 import { RegistroService } from './registro.service';
 
-@Controller('registro')
+@Controller('registro') //con este prefijo se puede acceder a los endpoints que se mencionan (agrupacion de endpoints).
 export class RegistroController {
   constructor(private readonly _registroService: RegistroService) {}
 
-  @Get('all')
-  async getRegistros(): Promise<RegistroDto[]> {
+  @Get('all') //con este metodo despues del prefijo registro/all entregara todos los datos filtrados por el metodo getAll de RegistroService
+  async getRegistros(): Promise<Registro[]> {
     const registros = await this._registroService.getAll();
     return registros;
   }
-  @Get(':id')
-  async getRegistro(
-    @Param('id', ParseIntPipe) id: number,
-  ): Promise<RegistroDto> {
+  @Get(':id') //con este metodo despues del prefijo registro/:id entregara el dato en especifico filtrados por el metodo get de RegistroService
+  async getRegistro(@Param('id', ParseIntPipe) id: number): Promise<Registro> {
     const registro = await this._registroService.get(id);
     return registro;
   }
