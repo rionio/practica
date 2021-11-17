@@ -8,14 +8,15 @@ import { DatabaseModule } from './database/database.module';
 import { RegistroModule } from './modules/registro/registro.module';
 
 @Module({
-  imports: [ConfigModule, DatabaseModule, RegistroModule],
-  controllers: [AppController],
-  providers: [AppService, ConfigService],
+  imports: [ConfigModule, DatabaseModule, RegistroModule], //se importan todos los modulos que se usaran
+  controllers: [AppController], //los controladores son los que responden a los endpoints?
+  providers: [AppService, ConfigService], //desconozco lo que se ponga acá
 })
 export class AppModule {
-  static port: number | string;
+  static port: number | string; //definimos un atributo estatico el cual sera el puerto
 
   constructor(private readonly _configService: ConfigService) {
+    //de esta manera se puede usar los metodos de ConfigService para determinar el puerto
     AppModule.port = this._configService.get(Configuration.SERVER_PORT);
   }
 }
