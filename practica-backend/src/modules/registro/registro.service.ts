@@ -1,5 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { plainToClass } from 'class-transformer';
+import { RegistroDto } from '../registro/dto/registro.dto';
 import { Registro } from './registro.entity';
 import { RegisterRepository } from './registro.repository';
 
@@ -9,7 +11,7 @@ export class RegistroService {
     @InjectRepository(RegisterRepository) //se inyecta el repositorio Registro para poder usar los metodos que contiene
     private readonly _registroRepository: RegisterRepository,
   ) {}
-  async getAll(): Promise<Registro[]> {
+  async getAll(): Promise<RegistroDto[]> {
     /*
     se manejan los datos de la DB de manera asincronica 
     esto lo que hara es crear una constante registro del tipo arreglo del tipo Registro
@@ -20,9 +22,9 @@ export class RegistroService {
     if (!registros) {
       throw new NotFoundException();
     }
-    return registros;
+    return plainToClass(RegistroDto, registros); //esta funcion mappeara los datos de registros y en base a RegistroDto
   }
-  async get(id: number): Promise<Registro> {
+  async get(id: number): Promise<RegistroDto> {
     /*
     se manejan los datos de la DB de manera asincronica 
     esto lo que hara es crear una constante registro del tipo Registro
@@ -36,6 +38,6 @@ export class RegistroService {
     if (!registro) {
       throw new NotFoundException();
     }
-    return registro;
+    return plainToClass(RegistroDto, registro);
   }
 }
