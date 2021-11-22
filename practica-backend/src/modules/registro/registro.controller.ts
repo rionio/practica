@@ -1,11 +1,4 @@
-import {
-  Controller,
-  Get,
-  Param,
-  ParseIntPipe,
-  UsePipes,
-  ValidationPipe,
-} from '@nestjs/common';
+import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
 import { RegistroDto } from './dto';
 import { RegistroService } from './registro.service';
 
@@ -19,7 +12,6 @@ export class RegistroController {
     return registros;
   }
   @Get(':id') //con este metodo despues del prefijo registro/:id entregara el dato en especifico filtrados por el metodo get de RegistroService
-  @UsePipes(new ValidationPipe({ whitelist: true }))
   async getRegistro(
     @Param('id', ParseIntPipe) id: number,
   ): Promise<RegistroDto> {
