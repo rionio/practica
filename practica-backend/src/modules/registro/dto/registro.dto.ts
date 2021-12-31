@@ -8,7 +8,5 @@ export class RegistroDto {
   @Expose()
   userid: number;
   @Expose()
-  tiempo: number;
-  @Expose()
   fecha: Date;
 }

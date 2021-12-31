@@ -1,0 +1,15 @@
+<div class="flex">
+  <div class="flex-item">
+    <div style="display: block;">
+      <canvas baseChart width="200" height="100"
+                  [data]="lineChartData"
+                  [options]="lineChartOptions"
+                  [type]="lineChartType"
+                  (chartHover)="chartHovered($event)"
+                  (chartClick)="chartClicked($event)"></canvas>
+    </div>
+      <div class="button-row">>
+        <button mat-button mat-raised-button color="primary" (click)="hideOne()">Actualizar</button>
+      </div>
+  </div>
+</div>
